@@ -44,3 +44,6 @@ def read_from_file(file: Path) -> tuple[set[str], dict[str, str]]:
 
     dirs.add(MISC_DIR)
     return dirs, targets
+
+
+__all__ = "MISC_DIR", "move_file", "move_image", "read_from_file"
