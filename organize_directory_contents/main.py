@@ -1,10 +1,6 @@
-#!/opt/homebrew/bin/python3 -OO
-"""A CLI script to organize the contents of a directory"""
-
 __author__ = "Charles Mesa Cayobit"
 
 
-from argparse import ArgumentParser
 from pathlib import Path
 
 import organize_directory_contents.files as files
@@ -52,18 +48,3 @@ def main(root_dir: Path, config_file: Path) -> None:
             files.move_file(xmp_file, root_dir / targets.MISC_DIR)
         except FileNotFoundError:
             pass  # Do nothing if the image sidecar file had already been moved.
-
-
-if __name__ == "__main__":
-    parser = ArgumentParser(prog="Organize Directory", description=__doc__)
-    parser.add_argument("dir", type=Path, help="the directory to organize")
-    parser.add_argument(
-        "-t",
-        "--targets",
-        type=Path,
-        help="a map between a file extension and its destination",
-    )
-    args = parser.parse_args()
-    targets_file = args.targets or args.dir / "targets.cfg"
-
-    main(args.dir, targets_file)
