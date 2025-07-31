@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/opt/homebrew/bin/zsh -f
 # A script for preparing `process_screenshots/main.sh`. It will be sourced by a
 # Folder Action
 
@@ -10,7 +10,7 @@ readonly TAG_FILES_DIR="${HOME}/.config/exiftool"
 
 ################################################################################
 
-if [ -p $PIPE ]; then
+if [[ -p $PIPE ]]; then
     echo "Pipe '${PIPE}' exists; Folder action already in progress" 1>&2
     exit 1
 fi

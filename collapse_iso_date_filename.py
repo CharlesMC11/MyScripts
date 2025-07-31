@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 -OO
+#!/opt/homebrew/bin/python3 -OO
 """Collapse a filename that follows `YYYY-MM-DDThh:mm:ss±z.ext`."""
 
 
