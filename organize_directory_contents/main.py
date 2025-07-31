@@ -27,6 +27,9 @@ def main(root_dir: Path, config_file: Path) -> None:
         if file.name in subdirs or file.name == ".DS_Store":
             continue
 
+        if file.is_dir():
+            files.move_file(file, root_dir / targets.MISC_DIR)
+
         file_ext = file.suffix
         if not file_ext:
             files.move_file(file, root_dir / targets.MISC_DIR)
