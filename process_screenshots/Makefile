@@ -1,17 +1,23 @@
 SCRIPT_NAME := process_screenshots
 BIN_PATH    := ~/.local/bin/$(SCRIPT_NAME)
 
+symlink     := install -v -l as
+
 all:  main workflow
 
-main: main.sh dir
-	install -v -l as $< $(BIN_PATH)/$@
+main: main.sh.zwc dir
+	$(symlink) $@.sh $(BIN_PATH)/$@
+	$(symlink) $< $(BIN_PATH)/$@.zwc
 	chmod +x $(BIN_PATH)/$@
 
-workflow: workflow.sh $(SCRIPT_NAME).workflow dir
-	install -v -l as $(SCRIPT_NAME).workflow ~/Library/Workflows/Applications/Folder\ Actions/$<
+workflow: workflow.sh.zwc $(SCRIPT_NAME).workflow dir
+	$(symlink) $(SCRIPT_NAME).workflow ~/Library/Workflows/Applications/Folder\ Actions/$<
 
-	install -v -l as $< $(BIN_PATH)/$<
-	chmod +x $(BIN_PATH)/$<
+	$(symlink) $@.sh $(BIN_PATH)/$@.sh
+	$(symlink) $< $(BIN_PATH)/$<
+
+%.sh.zwc: %.sh
+	zsh -c 'zcompile $<'
 
 dir:
 	if [ -d $(BIN_PATH) ]; then exit 0;\
