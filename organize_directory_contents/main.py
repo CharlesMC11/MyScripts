@@ -7,8 +7,8 @@ __author__ = "Charles Mesa Cayobit"
 from argparse import ArgumentParser
 from pathlib import Path
 
-import move_file
-import targets
+import organize_directory_contents.files as files
+import organize_directory_contents.targets as targets
 
 
 def main(root_dir: Path, config_file: Path) -> None:
@@ -27,22 +27,26 @@ def main(root_dir: Path, config_file: Path) -> None:
         if file.name in subdirs or file.name == ".DS_Store":
             continue
 
-        # Utilize short-circuiting by checking if the file extension is "xmp"
-        # only at the end.
-        if (file_ext := file.suffix) and (file_ext := file_ext[1:].lower()) == "xmp":
+        file_ext = file.suffix
+        if not file_ext:
+            files.move_file(file, root_dir / targets.MISC_DIR)
+            continue
+
+        file_ext = file_ext[1:].lower()
+        if file_ext == "xmp":
             xmp_files.append(file)
             continue
 
         target_dir = target_dirs.get(file_ext, targets.MISC_DIR)
         if target_dir == images_dir or target_dir == images_raw_dir:
-            move_file.move_image(file, root_dir / target_dir)
+            files.move_image(file, root_dir / target_dir)
 
         else:
-            move_file.move_file(file, root_dir / target_dir)
+            files.move_file(file, root_dir / target_dir)
 
     for xmp_file in xmp_files:
         try:
-            move_file.move_file(xmp_file, root_dir / targets.MISC_DIR)
+            files.move_file(xmp_file, root_dir / targets.MISC_DIR)
         except FileNotFoundError:
             pass  # Do nothing if the image sidecar file had already been moved.
 
