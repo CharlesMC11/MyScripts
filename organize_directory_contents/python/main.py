@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 -OO
+#!/opt/homebrew/bin/python3 -OO
 """A CLI script to organize the contents of a directory"""
 
 __author__ = "Charles Mesa Cayobit"
