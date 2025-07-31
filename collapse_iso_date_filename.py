@@ -1,7 +1,6 @@
 #!/opt/homebrew/bin/python3 -OO
 """Collapse a filename that follows `YYYY-MM-DDThh:mm:ss±z.ext`."""
 
-
 from argparse import ArgumentParser
 from pathlib import Path
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3 -OO
 """A CLI script to organize the contents of a directory"""
 
-
 __author__ = "Charles Mesa Cayobit"
 
 
@@ -30,9 +29,7 @@ def main(root_dir: Path, config_file: Path) -> None:
 
         # Utilize short-circuiting by checking if the file extension is "xmp"
         # only at the end.
-        if (file_ext := file.suffix) and (
-            file_ext := file_ext[1:].lower()
-        ) == "xmp":
+        if (file_ext := file.suffix) and (file_ext := file_ext[1:].lower()) == "xmp":
             xmp_files.append(file)
             continue
 
