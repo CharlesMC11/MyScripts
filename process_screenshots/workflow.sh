@@ -15,9 +15,9 @@ if [[ -p $PIPE ]]; then
     exit 1
 fi
 # Taking multiple screenshots in succession causes the Folder Action to trigger
-# the same amount of times. Checking for this temporary pipe in the `elif`
+# the same amount of times. Checking for this temporary pipe in the `if`
 # statement above ensures that only the first instance of the Folder Action
-# executes the rest of the script body
+# executes the rest of the script body.
 mkfifo "$PIPE" && trap 'rm "$PIPE"' EXIT
 
 "${EXECUTABLE_DIR}/main" -i "${SCREENSHOTS_DIR}/.tmp" -o "$SCREENSHOTS_DIR"\
