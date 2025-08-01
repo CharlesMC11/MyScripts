@@ -27,6 +27,7 @@ def main(root_dir: Path, config_file: Path) -> None:
 
         if file.is_dir():
             move_file(file, root_dir / MISC_DIR)
+            continue
 
         file_ext = file.suffix
         if not file_ext:
@@ -41,9 +42,9 @@ def main(root_dir: Path, config_file: Path) -> None:
         target_dir = target_dirs.get(file_ext, MISC_DIR)
         if target_dir == images_dir or target_dir == images_raw_dir:
             move_image(file, root_dir / target_dir)
+            continue
 
-        else:
-            move_file(file, root_dir / target_dir)
+        move_file(file, root_dir / target_dir)
 
     for xmp_file in xmp_files:
         try:
