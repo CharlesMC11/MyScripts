@@ -15,7 +15,7 @@ def read_targets_from_file(
     dirs: set[str] = {MISC_DIR}
     targets: defaultdict[str, str] = defaultdict(lambda: MISC_DIR)
 
-    with file.open() as f:
+    with file.open(encoding="utf-8") as f:
         for line in f:
             if not line or line.startswith("#"):
                 continue
@@ -45,7 +45,7 @@ def move_extensionless(
 
     target_dir = MISC_DIR
     try:
-        with file.open("r", encoding="utf-8") as f:
+        with file.open(encoding="utf-8") as f:
             header = f.readline().lower()
 
     except (IOError, UnicodeDecodeError):
