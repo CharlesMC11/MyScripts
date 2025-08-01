@@ -57,13 +57,13 @@ if ! ls ${~orig_filename_pattern}; then
     exit 2
 fi 1>/dev/null
 
+readonly timezone=$(date +%z)
+
 # PERL string replacement patterns that will be used by ExifTool
 readonly re='^.+?(2[0-1])(\d{2})-([0-1]\d)-([0-3]\d).+([0-2]\d)\.([0-5]\d)\.([0-5]\d)(\s\(\d+?\))?\..+?$'
 readonly orig_str_pattern="Filename;s/${re}"
 readonly new_filename_pattern="\${${orig_str_pattern}/\$2\$3\$4_\$5\$6\$7\$8.%e/}"
 readonly new_datetime_pattern="\${${orig_str_pattern}/\$1\$2-\$3-\$4T\$5:\$6:\$7${timezone}/}"
-
-readonly timezone=$(date +%z)
 
 readonly hardware=$(system_profiler SPHardwareDataType | sed -En 's/^.*Model Name: //p')
 
