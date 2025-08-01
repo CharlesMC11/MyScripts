@@ -26,7 +26,7 @@ def main(root_dir: Path, config_file: Path) -> None:
         if file.name in subdirs or file.name == ".DS_Store":
             continue
 
-        if file.is_dir():
+        elif file.is_dir():
             move_file(file, root_dir / MISC_DIR)
             continue
 
@@ -43,9 +43,9 @@ def main(root_dir: Path, config_file: Path) -> None:
         target_dir = target_dirs[file_ext]
         if target_dir == images_dir or target_dir == images_raw_dir:
             move_image(file, root_dir / target_dir)
-            continue
 
-        move_file(file, root_dir / target_dir)
+        else:
+            move_file(file, root_dir / target_dir)
 
     for xmp_file in xmp_files:
         try:
