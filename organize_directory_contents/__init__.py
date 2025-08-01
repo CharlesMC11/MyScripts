@@ -12,7 +12,7 @@ def read_targets_from_file(
 ) -> tuple[frozenset[str], defaultdict[str, str]]:
     """Create a targets mapping from a file."""
 
-    dirs: set[str] = set()
+    dirs: set[str] = {MISC_DIR}
     targets: defaultdict[str, str] = defaultdict(lambda: MISC_DIR)
 
     with file.open() as f:
@@ -26,9 +26,9 @@ def read_targets_from_file(
 
             value = value.strip()
             dirs.add(value)
+
             targets[key.strip()] = value
 
-    dirs.add(MISC_DIR)
     return frozenset(dirs), targets
 
 
