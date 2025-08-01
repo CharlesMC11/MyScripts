@@ -9,11 +9,9 @@ from pathlib import Path
 from organize_directory_contents import *
 
 
-def main(root_dir: Path, config_file: Path) -> None:
-    subdirs, target_dirs = read_targets_from_file(config_file)
+def main(root_dir: Path, targets_file: Path) -> None:
 
-    images_dir = target_dirs["jpg"]
-    images_raw_dir = target_dirs["dng"]
+    subdirs, target_dirs = read_targets_from_file(targets_file)
 
     for subdir in subdirs:
         (root_dir / subdir).mkdir(parents=True, exist_ok=True)
