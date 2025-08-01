@@ -3,13 +3,14 @@ __author__ = "Charles Mesa Cayobit"
 
 from collections import defaultdict
 from pathlib import Path
+from types import MappingProxyType
 
 MISC_DIR = "Misc"
 
 
 def read_targets_from_file(
     file: Path,
-) -> tuple[frozenset[str], defaultdict[str, str]]:
+) -> tuple[frozenset[str], MappingProxyType[str, str]]:
     """Create a targets mapping from a file."""
 
     dirs: set[str] = {MISC_DIR}
@@ -29,7 +30,7 @@ def read_targets_from_file(
 
             targets[key.strip()] = value
 
-    return frozenset(dirs), targets
+    return frozenset(dirs), MappingProxyType(targets)
 
 
 def move_file(file: Path, target_dir: Path) -> None:
