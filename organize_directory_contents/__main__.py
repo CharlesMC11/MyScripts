@@ -32,7 +32,7 @@ def main(root_dir: Path, config_file: Path) -> None:
 
         file_ext = file.suffix
         if not file_ext:
-            move_file(file, root_dir / MISC_DIR)
+            move_extensionless(file, root_dir, target_dirs)
             continue
 
         file_ext = file_ext[1:].lower()
