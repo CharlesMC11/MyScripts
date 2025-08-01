@@ -59,8 +59,8 @@ _PROGRAMMING = "Programming"
 _PROGRAMMING_ASSEMBLY = os.path.join(_PROGRAMMING, "Assembly")
 _PROGRAMMING_C_CPP = os.path.join(_PROGRAMMING, "C:C++")
 _PROGRAMMING_JAVASCRIPT = os.path.join(_PROGRAMMING, "JavaScript")
-_PROGRAMMING_PYTHON = os.path.join(_PROGRAMMING, "Python")
-_PROGRAMMING_SHELL = os.path.join(_PROGRAMMING, "Shell")
+PROGRAMMING_PYTHON = os.path.join(_PROGRAMMING, "Python")
+PROGRAMMING_SHELL = os.path.join(_PROGRAMMING, "Shell")
 # Videos
 _VIDEOS = "Videos"
 
@@ -140,14 +140,14 @@ _TARGETS = {
     "gs": _PROGRAMMING_JAVASCRIPT,
     "js": _PROGRAMMING_JAVASCRIPT,
     # Programming/Python
-    "py": _PROGRAMMING_PYTHON,
-    "pyc": _PROGRAMMING_PYTHON,
-    "pyi": _PROGRAMMING_PYTHON,
+    "py": PROGRAMMING_PYTHON,
+    "pyc": PROGRAMMING_PYTHON,
+    "pyi": PROGRAMMING_PYTHON,
     # Programming/Shell
-    "bash": _PROGRAMMING_SHELL,
-    "sh": _PROGRAMMING_SHELL,
-    "zsh": _PROGRAMMING_SHELL,
-    "zwc": _PROGRAMMING_SHELL,
+    "bash": PROGRAMMING_SHELL,
+    "sh": PROGRAMMING_SHELL,
+    "zsh": PROGRAMMING_SHELL,
+    "zwc": PROGRAMMING_SHELL,
     # Serialization
     "db": _PROGRAMMING,
     "json": _PROGRAMMING,
@@ -172,4 +172,12 @@ DIRECTORIES = frozenset(_tmp)
 TARGETS = MappingProxyType(defaultdict(lambda: MISC, _TARGETS))
 
 
-__all__ = "DIRECTORIES", "IMAGES", "IMAGES_RAW", "MISC", "TARGETS"
+__all__ = (
+    "DIRECTORIES",
+    "IMAGES",
+    "IMAGES_RAW",
+    "MISC",
+    "PROGRAMMING_PYTHON",
+    "PROGRAMMING_SHELL",
+    "TARGETS",
+)

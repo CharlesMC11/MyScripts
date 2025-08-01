@@ -25,10 +25,10 @@ def move_extensionless(file: Path, root_dir: Path) -> None:
 
     else:
         if "python3" in header:
-            target_dir = targets.TARGETS["py"]
+            target_dir = targets.PROGRAMMING_PYTHON
 
         elif "sh" in header:
-            target_dir = targets.TARGETS["sh"]
+            target_dir = targets.PROGRAMMING_SHELL
 
     move_file(file, root_dir / target_dir)
 
