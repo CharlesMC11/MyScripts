@@ -10,7 +10,10 @@ from organize_directory_contents import *
 
 
 def main(root_dir: Path, config_file: Path) -> None:
-    subdirs, target_dirs = read_from_file(config_file)
+    subdirs, target_dirs = read_targets_from_file(config_file)
+
+    images_dir = target_dirs["jpg"]
+    images_raw_dir = target_dirs["dng"]
 
     for subdir in subdirs:
         (root_dir / subdir).mkdir(parents=True, exist_ok=True)
@@ -19,8 +22,6 @@ def main(root_dir: Path, config_file: Path) -> None:
     # image, so defer processing XMP files to the end.
     xmp_files: list[Path] = []
 
-    images_dir = target_dirs["jpg"]
-    images_raw_dir = target_dirs["dng"]
     for file in root_dir.iterdir():
         if file.name in subdirs or file.name == ".DS_Store":
             continue
@@ -39,7 +40,7 @@ def main(root_dir: Path, config_file: Path) -> None:
             xmp_files.append(file)
             continue
 
-        target_dir = target_dirs.get(file_ext, MISC_DIR)
+        target_dir = target_dirs[file_ext]
         if target_dir == images_dir or target_dir == images_raw_dir:
             move_image(file, root_dir / target_dir)
             continue
