@@ -16,12 +16,24 @@ def main(root_dir: Path, targets_file: Path) -> None:
     for subdir in subdirs:
         (root_dir / subdir).mkdir(parents=True, exist_ok=True)
 
+    def is_to_ignore(file: Path) -> bool:
+        """Skip `file` if it passes the criteria."""
+
+        return (
+            file.name in subdirs
+            or file.name == ".DS_Store"
+            or file == targets_file
+        )
+
+    images_dir = target_dirs["jpg"]
+    images_raw_dir = target_dirs["dng"]
+
     # `move_image()` will move an image's existing sidecar file alongside the
     # image, so defer processing XMP files to the end.
     xmp_files: list[Path] = []
 
     for file in root_dir.iterdir():
-        if file.name in subdirs or file.name == ".DS_Store":
+        if is_to_ignore(file):
             continue
 
         elif file.is_dir():
