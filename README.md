@@ -1,11 +1,8 @@
 # Personal Scripts
 
-## `organize_directory_contents`
+## `organize_directory`
 
-A script originally intended to organize my Downloads folder. A `targets.cfg`
-file contains which subdirectories files with particular extensions should be
-sent to. This `targets.cfg` file can be given to the script as an argument or
-placed within the same directory that will be organized.
+A script originally intended to organize my Downloads folder.
 
 ## `process_screenshots`
 
