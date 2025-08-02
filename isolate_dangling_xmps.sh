@@ -2,8 +2,10 @@
 # A script for isolating sidecar files without an image
 
 readonly SCRIPT_NAME=${0:t:r}
+
 readonly TARGET_DIR=__dangling_xmps__
 readonly MISC_DIR=Misc
+
 declare -Ua FILE_EXTENSIONS
 readonly FILE_EXTENSIONS=(dng heif jpeg jpg orf png psd tif tiff)
 
