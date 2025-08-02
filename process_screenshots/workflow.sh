@@ -8,6 +8,9 @@ readonly PIPE="${SCREENSHOTS_DIR}/process_screenshots"
 readonly EXECUTABLE_DIR="${HOME}/.local/bin/process_screenshots"
 readonly TAG_FILES_DIR="${HOME}/.config/exiftool"
 
+export -Ua path
+path=("${EXECUTABLE_DIR}" /opt/homebrew/bin ${==path})
+
 ################################################################################
 
 if [[ -p $PIPE ]]; then
@@ -20,5 +23,5 @@ fi
 # executes the rest of the script body.
 mkfifo "$PIPE" && trap 'rm "$PIPE"' EXIT
 
-"${EXECUTABLE_DIR}/main" -i "${SCREENSHOTS_DIR}/.tmp" -o "$SCREENSHOTS_DIR"\
+main -v -i "${SCREENSHOTS_DIR}/.tmp" -o "$SCREENSHOTS_DIR"\
     "${TAG_FILES_DIR}/charlesmc.args" "${TAG_FILES_DIR}/screenshot.args"
