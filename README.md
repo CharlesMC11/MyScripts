@@ -1,10 +1,10 @@
 # Personal Scripts
 
-## `organize_directory`
+## [`organize_directory`](https://github.com/CharlesMC11/organize_directory.git)
 
 A script originally intended to organize my Downloads folder.
 
-## `process_screenshots`
+## [`process_screenshots`](https://github.com/CharlesMC11/process_screenshots.git)
 
 A script that renames and adds certain metadata to screenshots taken on my
 laptop. `main.sh` can be directly used in the terminal, while `workflow.sh` is
