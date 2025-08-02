@@ -2,7 +2,6 @@
 # A script for renaming screenshots and adding certain metadata
 
 readonly SCRIPT_NAME=${0:t2:r}
-readonly HOMEBREW_DIR=/opt/homebrew/bin
 
 show_usage () {
     echo "usage: ${SCRIPT_NAME} [-v | --verbose, -h | --help ] [-i | --input source] [-o | --output target] [*.args arg files]" 1>&2
@@ -31,7 +30,7 @@ error_if_not_dir () {
 
 output_dir=$PWD
 declare -Ua tag_files
-while (($# > 0)); do
+while (($#)); do
     case $1 in
         -h | --help   ) show_usage; exit
         ;;
@@ -51,11 +50,13 @@ while (($# > 0)); do
     shift
 done
 
-readonly orig_filename_pattern='*2<-1><-9><-9>-<-1><-9>-<-3><-9>*<-2><-9>.<-5><-9>.<-5><-9>*.*(.)'
-if ! ls ${~orig_filename_pattern}; then
+readonly orig_filename_pattern='*2<-1><-9><-9>-<-1><-9>-<-3><-9>*<-2><-9>.<-5><-9>.<-5><-9>*.*(.N)'
+declare -Ua screenshot_files
+readonly screenshot_files=(${~orig_filename_pattern})
+if ((${#screenshot_files} == 0)); then
     echo "No screenshots to process: ${PWD}" 1>&2
     exit 2
-fi 1>/dev/null
+fi
 
 readonly timezone=$(date +%z)
 
@@ -67,19 +68,18 @@ readonly new_datetime_pattern="\${${orig_str_pattern}/\$1\$2-\$3-\$4T\$5:\$6:\$7
 
 readonly hardware=$(system_profiler SPHardwareDataType | sed -En 's/^.*Model Name: //p')
 
-"${HOMEBREW_DIR}/exiftool" -P -struct        ${is_verbose:+'-v'}\
-    "-directory=${output_dir}"               "-Filename<${new_filename_pattern}"\
-    "-AllDates<${new_datetime_pattern}"      "-OffsetTime*=${timezone}"\
-    '-MaxAvailHeight<ImageHeight'            '-MaxAvailWidth<ImageWidth'\
-    '-RawFileName<FileName'                  '-PreservedFileName<FileName'\
-    "-Software=$(sw_vers --productVersion)"  "-Model=${hardware}"\
-    ${=tag_files}                            ${~orig_filename_pattern}
+exiftool ${is_verbose:+'-v'} -P -struct     ${==screenshot_files}\
+    "-directory=${output_dir}"              "-Filename<${new_filename_pattern}"\
+    "-AllDates<${new_datetime_pattern}"     "-OffsetTime*=${timezone}"\
+    '-MaxAvailHeight<ImageHeight'           '-MaxAvailWidth<ImageWidth'\
+    '-RawFileName<FileName'                 '-PreservedFileName<FileName'\
+    "-Software=$(sw_vers --productVersion)" "-Model=${hardware}"\
+    ${=tag_files}
 
 if (($? == 0)); then
-    tmp_dir=$(mktemp -d -t cmc)
-    mv ${~orig_filename_pattern} "$tmp_dir"
+    readonly archive="${output_dir}/Screenshots_$(date +%y%m%d_%H%M%S).tar"
+    tar -cf "$archive" ${==screenshot_files}
+    gzip ${is_verbose:+'-v'} -1 "$archive"
 
-    aa archive -o "${output_dir}/Screenshots_$(date +%y%m%d_%H%M%S).aar"\
-        -d "$tmp_dir" -a lzma -exclude-name .DS_Store\
-        && rm -rf "$tmp_dir"
+    rm ${==screenshot_files}
 fi
