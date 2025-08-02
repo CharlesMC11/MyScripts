@@ -35,10 +35,10 @@ while (($#)); do
     shift
 done
 
-mkdir ./"${TARGET_DIR}" 2>/dev/null
-trap 'rmdir ./"${TARGET_DIR}" 2>/dev/null' EXIT
+mkdir ./"${TARGET_DIR}" 2>/dev/null\
+    && trap 'rmdir ./"${TARGET_DIR}" 2>/dev/null' EXIT
 
-for file in **/*.xmp; do
+for file in **/*.xmp(N); do
     if [[ ${file:h} == $MISC_DIR || ${file:h} == $TARGET_DIR ]]; then
         continue
     fi
@@ -56,4 +56,4 @@ for file in **/*.xmp; do
     fi
 
     mv ${is_verbose:+'-v'} "$file" "${TARGET_DIR}/${file:t}"
-done 2>/dev/null
+done

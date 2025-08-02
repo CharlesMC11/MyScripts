@@ -12,7 +12,7 @@ intended to be sourced by a MacOS Folder Action.
 
 ## `collapse_iso_date_filename`
 
-## `isolate_dangling_xmp_files`
+## `isolate_dangling_xmps`
 
 A script that will recursively search a directory for XMP files that don't have
 corresponding image files, then move them to a new directory.
