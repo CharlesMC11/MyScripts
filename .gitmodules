@@ -1,3 +1,6 @@
+[submodule "organize_directory"]
+	path = organize_directory
+	url = https://github.com/CharlesMC11/organize_directory.git
 [submodule "process_screenshots"]
 	path = process_screenshots
 	url = https://github.com/CharlesMC11/process_screenshots.git
