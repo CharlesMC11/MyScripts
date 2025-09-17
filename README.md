@@ -1,5 +1,9 @@
 # Personal Scripts
 
+## [`crop_discord_call_photos`](https://github.com/CharlesMC11/crop_discord_call_photos.git)
+
+A script for cropping screenshots taken during Discord video calls
+
 ## [`organize_directory`](https://github.com/CharlesMC11/organize_directory.git)
 
 A script originally intended to organize my Downloads folder.

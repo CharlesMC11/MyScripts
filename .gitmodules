@@ -1,3 +1,6 @@
+[submodule "crop_discord_call_photos"]
+	path = crop_discord_call_photos
+	url = https://github.com/CharlesMC11/crop_discord_call_photos.git
 [submodule "organize_directory"]
 	path = organize_directory
 	url = https://github.com/CharlesMC11/organize_directory.git
