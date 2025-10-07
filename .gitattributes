@@ -1,5 +1,7 @@
-*    text=auto
+*      text=auto
 
-*.md text diff=markdown
-*.py text diff=python
-*.sh text eol=lf
+*.git* text
+
+*.md   text diff=markdown
+*.py   text diff=python
+*.sh   text eol=lf
