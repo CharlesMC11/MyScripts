@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/zsh -f
+#!/usr/bin/env -S zsh -f
 # A script for isolating sidecar files without an image
 
 readonly SCRIPT_NAME=${0:t:r}

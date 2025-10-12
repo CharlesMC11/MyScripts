@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/python3 -OO
+#!/usr/bin/env -S python3.14 -OO
 """Collapse a filename that follows `YYYY-MM-DDThh:mm:ss±z.ext`."""
 
 from argparse import ArgumentParser

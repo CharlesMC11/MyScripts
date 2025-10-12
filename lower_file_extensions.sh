@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/zsh -f
+#!/usr/bin/env -S zsh -f
 # A script for converting file extensions to lowercase
 
 autoload zmv || exit $?
