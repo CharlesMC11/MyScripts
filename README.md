@@ -1,6 +1,6 @@
 # Personal Scripts
 
-## [`organize_directory`](https://github.com/CharlesMC11/organize_directory.git)
+## [`file_organizer`](https://github.com/CharlesMC11/file_organizer.git)
 
 A script originally intended to organize my Downloads folder.
 
