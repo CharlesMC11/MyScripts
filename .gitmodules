@@ -5,5 +5,5 @@
 	path = file_organizer
 	url = https://github.com/CharlesMC11/organize_directory.git
 [submodule "process_screenshots"]
-	path = process_screenshots/add_metadata
+	path = process_screenshots/screenshot-tagger
 	url = https://github.com/CharlesMC11/process_screenshots.git
