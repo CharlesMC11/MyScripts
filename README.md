@@ -6,11 +6,9 @@ A script originally intended to organize my Downloads folder.
 
 ## `process_screenshots`
 
-### [`add_metadata`](https://github.com/CharlesMC11/add_metadata.git)
+### [`screenshot-tagger`](https://github.com/CharlesMC11/screenshot-tagger.git)
 
-A script that renames and adds certain metadata to screenshots taken on my
-laptop. `main.sh` can be directly used in the terminal, while `workflow.sh` is
-intended to be sourced by a MacOS Folder Action.
+A Zsh-based automation suite for macOS that monitors a directory, renames screenshots based on their original capture timestamp, injects custom EXIF metadata, and archives the original files.
 
 ### [`crop_photos`](https://github.com/CharlesMC11/crop_call_photos.git)
 
