@@ -10,7 +10,7 @@ A script originally intended to organize my Downloads folder.
 
 A script for cropping screenshots taken during Discord video calls
 
-### [`screenshot-tagger`](https://github.com/CharlesMC11/screenshot-tagger.git)
+### [`sst`](https://github.com/CharlesMC11/sst.git)
 
 A Zsh-based automation suite for macOS that monitors a directory, renames screenshots based on their original capture timestamp, injects custom EXIF metadata, and archives the original files.
 

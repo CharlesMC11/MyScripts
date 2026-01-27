@@ -5,6 +5,6 @@
 [submodule "crop_call_photos"]
 	path = process_screenshots/crop_call_photos
 	url = https://github.com/CharlesMC11/crop_discord_call_photos.git
-[submodule "screenshot-tagger"]
-	path = process_screenshots/screenshot-tagger
-	url = https://github.com/CharlesMC11/process_screenshots.git
+[submodule "sst"]
+	path = process_screenshots/sst
+	url = https://github.com/CharlesMC11/sst.git
