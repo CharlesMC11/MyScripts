@@ -1,9 +1,10 @@
-[submodule "crop_discord_call_photos"]
-	path = process_screenshots/crop_call_photos
-	url = https://github.com/CharlesMC11/crop_discord_call_photos.git
-[submodule "organize_directory"]
+[submodule "file-organizer"]
 	path = file_organizer
 	url = https://github.com/CharlesMC11/organize_directory.git
-[submodule "process_screenshots"]
+
+[submodule "crop_call_photos"]
+	path = process_screenshots/crop_call_photos
+	url = https://github.com/CharlesMC11/crop_discord_call_photos.git
+[submodule "screenshot-tagger"]
 	path = process_screenshots/screenshot-tagger
 	url = https://github.com/CharlesMC11/process_screenshots.git

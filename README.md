@@ -6,15 +6,17 @@ A script originally intended to organize my Downloads folder.
 
 ## `process_screenshots`
 
-### [`screenshot-tagger`](https://github.com/CharlesMC11/screenshot-tagger.git)
-
-A Zsh-based automation suite for macOS that monitors a directory, renames screenshots based on their original capture timestamp, injects custom EXIF metadata, and archives the original files.
-
 ### [`crop_photos`](https://github.com/CharlesMC11/crop_call_photos.git)
 
 A script for cropping screenshots taken during Discord video calls
 
+### [`screenshot-tagger`](https://github.com/CharlesMC11/screenshot-tagger.git)
+
+A Zsh-based automation suite for macOS that monitors a directory, renames screenshots based on their original capture timestamp, injects custom EXIF metadata, and archives the original files.
+
 ## `collapse_iso_date_filename`
+
+## `create-ram-disk`
 
 ## `isolate_dangling_xmps`
 
